@@ -8,6 +8,7 @@ source "lib/configuration.sh"
 
 # load common functions
 source "lib/common.sh"
+source "lib/profiles.sh"
 
 if [ $# -lt 1 ]
 then
@@ -18,7 +19,7 @@ fi
 ACTION_NAME=$1
 shift
 ACTION_PATH="lib/actions/${ACTION_NAME}.sh"
-echo "Action: ${ACTION_NAME} Action Args: $* Action Path: ${ACTION_PATH}"
+
 if [ ! -f $ACTION_PATH ]
 then
 	 echo "${ACTION_NAME} is not a valid action"
