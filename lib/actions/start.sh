@@ -1,5 +1,5 @@
 #!/bin/sh
 
-log $LEASH_LOGFILE "Starting leash..."
-checked_command $LEASH_LOGFILE procer $PROFILE_DIRECTORY $PROCER_PIDFILE
-log $LEASH_LOGFILE "Done."
+log $LEASH_LOG "Starting leash..."
+checked_command $LEASH_LOG procer $PROFILE_DIRECTORY $PROCER_PIDFILE
+log $LEASH_LOG "Done."

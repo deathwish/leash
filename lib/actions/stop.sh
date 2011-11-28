@@ -1,5 +1,5 @@
 #!/bin/sh
 
-log $LEASH_LOGFILE "Stopping leash..."
-checked_command $LEASH_LOGFILE kill -- -`cat $PROCER_PIDFILE`
-log $LEASH_LOGFILE "Done."
+log $LEASH_LOG "Stopping leash..."
+checked_command $LEASH_LOG kill -- -`cat $PROCER_PIDFILE`
+log $LEASH_LOG "Done."

@@ -14,10 +14,7 @@ PATH="$(pwd)/setup/build:${PATH}"
 #
 build_and_install() {
 	 CURRENT_DIRECTORY=$(pwd)
-	 DOWNLOAD_DIRECTORY="${CURRENT_DIRECTORY}/files"
-	 BUILD_DIRECTORY="${CURRENT_DIRECTORY}/build"
 	 OUTPUT_DIRECTORY="${CURRENT_DIRECTORY}/usr"
-	 BUILD_LOG="${BUILD_DIRECTORY}/build.log"
 
 	 URL=$1
 	 TARBALL=$(basename $URL)
