@@ -13,9 +13,6 @@ PATH="${LEASH_DIRECTORY}/setup/build:${PATH}"
 # then attempt to run build_sqlite-autoconf $PREFIX in the source directory.
 #
 build_and_install() {
-	 CURRENT_DIRECTORY=$(pwd)
-	 OUTPUT_DIRECTORY="${LEASH_DIRECTORY}/usr"
-
 	 URL=$1
 	 TARBALL=$(basename $URL)
 	 PACKAGE_DIRECTORY=$(echo $URL | sed 's/.*\/\(.*\).tar.\(gz\|bz2\)/\1/')
@@ -28,12 +25,13 @@ build_and_install() {
 	 checked_command $BUILD_LOG extract_package_source "${DOWNLOAD_DIRECTORY}/${TARBALL}" $BUILD_DIRECTORY
 
 	 log $BUILD_LOG "Compiling ${PACKAGE_DIRECTORY}"
+	 CURRENT_DIRECTORY=$(pwd)
 	 cd "${BUILD_DIRECTORY}/${PACKAGE_DIRECTORY}"
-	 checked_command $BUILD_LOG "${PACKAGE_NAME}.sh" $OUTPUT_DIRECTORY
+	 checked_command $BUILD_LOG "${PACKAGE_NAME}.sh" $PREFIX_DIRECTORY
 	 cd $CURRENT_DIRECTORY
 }
 
 while read PACKAGE_URL
 do
 	 build_and_install $PACKAGE_URL
-done < "${LEASH_DIRECTORY}/data/dependencies.txt"
+done < "${DATA_DIRECTORY}/dependencies.txt"
