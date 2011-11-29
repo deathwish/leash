@@ -1,31 +1,29 @@
 #!/bin/sh
 
 #
-# Download source from the given remote path into the given directory.
-# Example: download_package_source "zeromq-2.1.10.tar.gz" "http://download.zeromq.org" "files"
+# Download source from the given remote path into $DOWNLOAD_DIRECTORY.
+# Example: download_package_source "zeromq-2.1.10.tar.gz" "http://download.zeromq.org"
 #
 download_package_source() {
 	 URL=$1
-	 TARGET_DIRECTORY=$2
 
 	 TARBALL=$(basename $URL)
 
-	 if [ ! -f "${TARGET_DIRECTORY}/${TARBALL}" ];
+	 if [ ! -f "${DOWNLOAD_DIRECTORY}/${TARBALL}" ];
 	 then
-		  wget --directory-prefix=$TARGET_DIRECTORY $URL
+		  wget --directory-prefix=$DOWNLOAD_DIRECTORY $URL
 	 fi
 
 	 return $?
 }
 
 #
-# Extracts compressed sources into a target directory.
-# Example: extract_package_source "files/zeromq-2.1.10.tar.gz" "build"
+# Extracts compressed sources in $DOWNLOAD_DIRECTORY into $BUILD_DIRECTORY.
+# Example: extract_package_source "zeromq-2.1.10.tar.gz"
 #
 extract_package_source() {
-	 TARBALL_PATH=$1
-	 TARGET_DIRECTORY=$2
-	 EXTENSION=${TARBALL_PATH##*.}
+	 TARBALL=$1
+	 EXTENSION=${TARBALL##*.}
 
 	 if [ $EXTENSION == 'gz' ];
 	 then
@@ -37,7 +35,7 @@ extract_package_source() {
 		  return 1
 	 fi
 
-	 tar --directory=$TARGET_DIRECTORY --extract $COMPRESSION_FLAG --file=$TARBALL_PATH
+	 tar --directory=$BUILD_DIRECTORY --extract $COMPRESSION_FLAG --file="${DOWNLOAD_DIRECTORY}/${TARBALL}"
 
 	 return $?
 }
