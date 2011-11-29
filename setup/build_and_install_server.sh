@@ -4,7 +4,7 @@ for FILE in setup/lib/*.sh
 do
 	 source "$FILE"
 done
-PATH="$(pwd)/setup/build:${PATH}"
+PATH="${LEASH_DIRECTORY}/setup/build:${PATH}"
 
 #
 # Gets the source package from the specified URL, extracts it, and runs the configured compile command in the build directory, 
@@ -14,7 +14,7 @@ PATH="$(pwd)/setup/build:${PATH}"
 #
 build_and_install() {
 	 CURRENT_DIRECTORY=$(pwd)
-	 OUTPUT_DIRECTORY="${CURRENT_DIRECTORY}/usr"
+	 OUTPUT_DIRECTORY="${LEASH_DIRECTORY}/usr"
 
 	 URL=$1
 	 TARBALL=$(basename $URL)
@@ -33,7 +33,7 @@ build_and_install() {
 	 cd $CURRENT_DIRECTORY
 }
 
-build_and_install "http://www.sqlite.org/sqlite-autoconf-3070900.tar.gz"
-build_and_install "http://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.41.14.tar.gz"
-build_and_install "http://download.zeromq.org/historic/zeromq-2.1.7.tar.gz"
-build_and_install "http://mongrel2.org/static/downloads/mongrel2-1.7.5.tar.bz2"
+while read PACKAGE_URL
+do
+	 build_and_install $PACKAGE_URL
+done < "${LEASH_DIRECTORY}/data/dependencies.txt"

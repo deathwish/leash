@@ -1,0 +1,4 @@
+http://www.sqlite.org/sqlite-autoconf-3070900.tar.gz
+http://prdownloads.sourceforge.net/e2fsprogs/e2fsprogs-1.41.14.tar.gz
+http://download.zeromq.org/historic/zeromq-2.1.7.tar.gz
+http://mongrel2.org/static/downloads/mongrel2-1.7.5.tar.bz2
