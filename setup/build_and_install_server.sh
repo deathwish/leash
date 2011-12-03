@@ -13,14 +13,13 @@ done
 #
 build_and_install() {
 	 URL=$1
-	 TARBALL=$(basename $URL)
 	 PACKAGE_DIRECTORY=$(echo $URL | sed 's/.*\/\(.*\).tar.\(gz\|bz2\)/\1/')
 
 	 log $BUILD_LOG "Downloading ${PACKAGE_DIRECTORY}"
 	 checked_command $BUILD_LOG download_package_source $URL
 
 	 log $BUILD_LOG "Extracting ${PACKAGE_DIRECTORY}"
-	 checked_command $BUILD_LOG extract_package_source $TARBALL
+	 checked_command $BUILD_LOG extract_package_source $URL
 
 	 log $BUILD_LOG "Compiling ${PACKAGE_DIRECTORY}"
 	 PACKAGE_NAME=$(echo $URL | sed 's/.*\/\(.*\)-.*/\1/')
