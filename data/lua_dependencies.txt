@@ -1,0 +1,4 @@
+lua_signal
+https://github.com/iamaleksey/lua-zmq/raw/master/rockspecs/lua-zmq-scm-0.rockspec
+https://raw.github.com/jsimmons/tnetstrings.lua/master/rockspecs/tnetstrings-scm-0.rockspec
+http://tir.mongrel2.org/downloads/tir-0.9.3-3.rockspec
