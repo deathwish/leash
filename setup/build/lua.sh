@@ -1,5 +1,5 @@
 #!/bin/sh
 
-make posix 
+make linux
 make test
 make install INSTALL_TOP=$PREFIX_DIRECTORY
