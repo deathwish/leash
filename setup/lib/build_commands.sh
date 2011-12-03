@@ -34,7 +34,10 @@ automake_compile() {
 	 CURRENT_DIRECTORY=$(pwd)
 	 BUILD_IN="./$3"
 
-	 CPPFLAGS=$(preprocessor_flags $PREFIX) LDFLAGS=$(linker_flags $PREFIX) ./configure --prefix=$PREFIX $OPTIONS
+	 if [ ! -f ./config.status ]
+	 then
+		  CPPFLAGS=$(preprocessor_flags $PREFIX) LDFLAGS=$(linker_flags $PREFIX) ./configure --prefix=$PREFIX $OPTIONS
+	 fi
 	 cd $BUILD_IN
 	 make
 	 make install
