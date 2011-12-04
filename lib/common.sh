@@ -23,7 +23,7 @@ checked_command() {
 	 $* 1>> $LOGFILE 2>&1
 	 if [ $? != 0 ];
 	 then
-		  log "Command $* exited with status $?"
+		  log $LOGFILE "Command $* exited with status $?"
 		  exit 1
 	 fi
 }
