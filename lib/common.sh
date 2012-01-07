@@ -21,9 +21,10 @@ checked_command() {
 	 shift 1
 
 	 $* 1>> $LOGFILE 2>&1
-	 if [ $? != 0 ];
+	 EXIT_STATUS=$?
+	 if [ $EXIT_STATUS != 0 ];
 	 then
-		  log $LOGFILE "Command $* exited with status $?"
+		  log $LOGFILE "Command $* exited with status ${EXIT_STATUS}"
 		  exit 1
 	 fi
 }
