@@ -9,7 +9,7 @@ lua_make() {
 	 TARGETS=$2
 
 	 make MYCFLAGS="$(preprocessor_flags $PREFIX) -DLUA_USE_LINUX" \
-		  MYLDFLAGS="$(linker_flags $PREFIX) -Wl,-E -ldl -lreadline -lhistory -lncurses" \
+		  MYLIBS="$(linker_flags $PREFIX) -Wl,-E -ldl -lreadline -lhistory -lncurses" \
 		  INSTALL_TOP=$PREFIX \
 		  $TARGETS
 
