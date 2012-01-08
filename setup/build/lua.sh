@@ -18,6 +18,9 @@ lua_make() {
 
 
 cd src
+# LUA_ROOT is hardcoded to /usr/local/ regardless of what INSTALL_TOP has been set to.
+# This causes the default require path to be in /usr/local/, rather then in our $PREFIX.
+sed -i "s#\"/usr/local/\"#\"${1}/\"#" luaconf.h
 lua_make $1 all
 cd ..
 lua_make $1 test
