@@ -11,7 +11,7 @@ telescope.error = error
 
 step('I have an empty configuration', 
 	 function(step)
-		-- we don't have any configuration as yet.
+		assert_equal(os.execute('leash initialize_configuration'), 0)
 	 end)
 
 step('I start leash', 
