@@ -1,5 +1,6 @@
 lua_signal
+telescope
+https://raw.github.com/pib/calabash/master/rockspecs/calabash-scm-1.rockspec
 https://github.com/iamaleksey/lua-zmq/raw/master/rockspecs/lua-zmq-scm-0.rockspec
 https://raw.github.com/jsimmons/tnetstrings.lua/master/rockspecs/tnetstrings-scm-0.rockspec
 https://raw.github.com/zedshaw/Tir/master/rockspec/tir-0.9-3.rockspec
-https://raw.github.com/pib/calabash/master/rockspecs/calabash-scm-1.rockspec
