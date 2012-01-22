@@ -10,6 +10,9 @@ source "lib/configuration.sh"
 source "lib/common.sh"
 source "lib/profiles.sh"
 
+# setup custom dns resolution.
+source "lib/configure_dns.sh"
+
 if [ $# -lt 1 ]
 then
 	 echo "Usage: $(basename "$0") ACTION [ACTION ARGUMENTS]"

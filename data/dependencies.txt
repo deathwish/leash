@@ -5,3 +5,4 @@ http://mongrel2.org/static/downloads/mongrel2-1.7.5.tar.bz2
 ftp://ftp.cwru.edu/pub/bash/readline-6.2.tar.gz
 http://lua.org/ftp/lua-5.1.4.tar.gz
 http://luarocks.org/releases/luarocks-2.0.6.tar.gz
+https://github.com/downloads/deathwish/libnss_tld_mapper/libnss_tld_mapper-0.1.2.tar.gz
