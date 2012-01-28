@@ -21,3 +21,9 @@ If you wish to stop running Leash,
     $ leash stop
 
 should suffice.
+
+# Environment Variables #
+
+## LEASH_CONFIG_PATH ##
+
+When set, leash will use this directory for its configuration rather then the default.
