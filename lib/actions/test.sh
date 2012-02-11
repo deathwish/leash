@@ -31,6 +31,8 @@ run_integration_tests() {
 	cbsh
 }
 
+export LEASH_TEST_OUTPUT_PATH=$(mktemp -d -t leash_test_run.XXXXXX)
+
 for TARGET in "${REQUESTED_TARGETS[@]}"
 do
 	echo "running ${TARGET} tests"

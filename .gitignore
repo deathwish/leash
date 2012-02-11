@@ -1,5 +1,6 @@
 files
 /build
+/tmp
 server
 usr
 build.log

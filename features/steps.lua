@@ -1,4 +1,5 @@
 require 'calabash'
+local posix = require 'posix'
 
 -- telescope 0.4 does not correctly alias all of the global functions it calls,
 -- thus calabash environment rebinding causes running tests to fail.
@@ -9,8 +10,12 @@ telescope.tostring = tostring
 telescope.unpack = unpack
 telescope.error = error
 
+server_directory_index = 0
 step('I have an empty configuration', 
 	 function(step)
+		server_directory_index = server_directory_index + 1
+		local output_path = os.getenv('LEASH_TEST_OUTPUT_PATH')
+		posix.setenv('LEASH_CONFIG_PATH', output_path .. '/server.' .. server_directory_index)
 		assert_equal(os.execute('leash initialize_configuration'), 0)
 	 end)
 

@@ -3,6 +3,7 @@
 # Directories
 export LEASH_DIRECTORY="$(pwd)"
 export PREFIX_DIRECTORY="${LEASH_DIRECTORY}/usr"
+export TMPDIR="${LEASH_DIRECTORY}/tmp"
 if [ -n "${LEASH_CONFIG_PATH}" ]
 then
 	export SERVER_DIRECTORY=$(readlink -f $LEASH_CONFIG_PATH)
