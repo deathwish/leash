@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 log $BUILD_LOG "Creating directories..."
 checked_command $BUILD_LOG mkdir -p $BUILD_DIRECTORY

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 source ./setup/configuration.sh
 source ./setup/create_directory_structure.sh

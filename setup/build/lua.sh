@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #
 # Runs Make with compiler flags setup to match the convention used by the Lua makefile.

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 NSS_TLD_MAPPER_SO="${PREFIX_DIRECTORY}/lib/libnss_tld_mapper.so.2"
 if [ -f $NSS_TLD_MAPPER_SO ]

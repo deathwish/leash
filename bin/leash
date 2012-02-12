@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # regardless of where we were started, run from the install directory.
 cd "$(dirname "$0")/.."

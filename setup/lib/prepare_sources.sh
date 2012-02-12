@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #
 # Download source from the given remote path into $DOWNLOAD_DIRECTORY.

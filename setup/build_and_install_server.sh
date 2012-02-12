@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 for FILE in setup/lib/*.sh
 do

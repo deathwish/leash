@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Directories
 export DOWNLOAD_DIRECTORY="${LEASH_DIRECTORY}/files"

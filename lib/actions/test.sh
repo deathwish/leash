@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 AVAILABLE_TARGETS=('integration')
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 create_profile() {
 	 PROFILE_NAME=$1
@@ -21,7 +21,7 @@ create_profile() {
 
 	 echo $PID_FILE > pid_file
 	 
-	 echo '#!/bin/sh' > run
+	 echo '#!/bin/bash' > run
 	 echo '' >> run
 	 echo "cd $RUN_DIRECTORY" >> run
 	 echo "nohup ${RUN_COMMAND} > ${LOG_DIRECTORY}/${PROFILE_NAME}.log &" >> run

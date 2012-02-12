@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Directories
 export LEASH_DIRECTORY="$(pwd)"
