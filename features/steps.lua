@@ -10,26 +10,32 @@ telescope.tostring = tostring
 telescope.unpack = unpack
 telescope.error = error
 
-server_directory_index = 0
+local leash_test_output_path = os.getenv('LEASH_TEST_OUTPUT_PATH') .. '/'
+
+local function exec(command)
+   return os.execute(command .. ' 2>&1 1>>' .. leash_test_output_path .. 'test.log')
+end
+
+local server_directory_index = 0
 step('I have an empty configuration', 
 	 function(step)
 		server_directory_index = server_directory_index + 1
-		local output_path = os.getenv('LEASH_TEST_OUTPUT_PATH')
-		posix.setenv('LEASH_CONFIG_PATH', output_path .. '/server.' .. server_directory_index)
-		assert_equal(os.execute('leash initialize_configuration'), 0)
+		test_config_path = leash_test_output_path .. '/server.' .. server_directory_index
+		posix.setenv('LEASH_CONFIG_PATH', test_config_path)
+		assert_equal(exec('leash initialize_configuration'), 0)
 	 end)
 
 step('I start leash', 
 	 function(step)
-		assert_equal(os.execute('leash start'), 0)
+		assert_equal(exec('leash start'), 0)
 	 end)
 
 step('"(.*)" should be running', 
 	 function(step, process_name)
-		assert_equal(os.execute('ps -eo args | cut -f1 -d" " | grep ' .. process_name .. '| grep -qv grep'), 0)
+		assert_equal(exec('ps -eo args | cut -f1 -d" " | grep ' .. process_name .. '| grep -qv grep'), 0)
 	 end)
 
 step('I should be able to stop leash', 
 	 function(step)
-		assert_equal(os.execute('leash stop'), 0)
+		assert_equal(exec('leash stop'), 0)
 	 end)
