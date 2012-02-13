@@ -1,0 +1,38 @@
+#!/usr/bin/env lua
+
+local posix = require 'posix'
+
+local function quit_with_error(message)
+   io.stderr:write(message .. "\n")
+   os.exit(-1)
+end
+
+local function sigint_handler(signo)
+   print("Got SIGINT, quitting")
+   os.exit(0)
+end
+
+local function trap_signals()
+   posix.signal(posix.SIGINT, sigint_handler)
+end
+
+local function write_pidfile()
+   local filename = os.getenv('LEASH_PIDFILE')
+   if filename == nil or filename:len() <= 0 then
+	  quit_with_error("The environment variable LEASH_PIDFILE must be set.")
+   end
+   local pid = assert(posix.getpid('pid'), 'Failed to get pid')
+   local pidfile = assert(io.open(filename, 'w'), 'Failed to open pidfile ' .. filename .. ' for writing')
+   pidfile:write(pid)
+   pidfile:close()
+end
+
+-- TODO can we upgrade lua-posix to actually get signal support?
+-- trap_signals()
+write_pidfile()
+print("Started simple_server")
+
+-- main loop
+while true do
+   posix.sleep(1)
+end

@@ -2,9 +2,9 @@
 
 create_profile() {
 	 PROFILE_NAME=$1
-	 RUN_DIRECTORY=$2
+	 PROCESS_DIRECTORY=$2
 	 RUN_COMMAND=$3
-	 PID_FILE=$4
+	 PIDFILE="${RUN_DIRECTORY}/${PROFILE_NAME}.pid"
 	 CREATE_PROFILE_DIRECTORY="${PROFILE_DIRECTORY}/${PROFILE_NAME}"
 	 CURRENT_DIRECTORY="$(pwd)"
 
@@ -19,11 +19,13 @@ create_profile() {
 
 	 echo '' > depends
 
-	 echo $PID_FILE > pid_file
+	 echo $PIDFILE > pid_file
 	 
 	 echo '#!/bin/bash' > run
 	 echo '' >> run
-	 echo "cd $RUN_DIRECTORY" >> run
+	 echo "export LEASH_PIDFILE='${PIDFILE}'" >> run
+	 echo '' >> run
+	 echo "cd $PROCESS_DIRECTORY" >> run
 	 echo "nohup ${RUN_COMMAND} > ${LOG_DIRECTORY}/${PROFILE_NAME}.log &" >> run
 	 echo "sleep 2 # wait for ${PROFILE_NAME} to come up and write its pidfile." >> run
 	 chmod +x run
