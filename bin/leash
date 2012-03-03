@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # regardless of where we were started, run from the install directory.
-cd "$(dirname "$0")/.."
+cd "$(dirname $(readlink -f "$0"))/.."
 
 # load the common environment.
 source "lib/configuration.sh"
