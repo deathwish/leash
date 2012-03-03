@@ -16,8 +16,13 @@ local function exec(command)
    return os.execute(command .. ' 2>&1 1>>' .. leash_test_output_path .. 'test.log')
 end
 
+local function process_is_running(process_name)
+   -- grab the command name and first argument so that interpreters will be matched.
+   return exec('ps -eo args | cut -f1,2 -d" " | grep ' .. process_name .. '| grep -qv grep') == 0
+end
+
 local server_directory_index = 0
-step('I have an empty configuration', 
+step('I have an empty configuration',
 	 function(step)
 		server_directory_index = server_directory_index + 1
 		test_config_path = leash_test_output_path .. '/server.' .. server_directory_index
@@ -25,20 +30,24 @@ step('I have an empty configuration',
 		assert_equal(exec('leash initialize_configuration'), 0)
 	 end)
 
-step('I start leash', 
+step('I start leash',
 	 function(step)
 		assert_equal(exec('leash start'), 0)
 		-- wait for leash to come up before executing further tests.
 		posix.sleep(3)
 	 end)
 
-step('"(.*)" should be running', 
+step('"(.*)" should be running',
 	 function(step, process_name)
-		-- grab the command name and first argument so that interpreters will be matched.
-		assert_equal(exec('ps -eo args | cut -f1,2 -d" " | grep ' .. process_name .. '| grep -qv grep'), 0)
+		assert_true(process_is_running(process_name))
 	 end)
 
-step('I should be able to stop leash', 
+step('"(.*)" should not be running',
+	 function(step, process_name)
+		assert_false(process_is_running(process_name))
+	 end)
+
+step('I should be able to stop leash',
 	 function(step)
 		assert_equal(exec('leash stop'), 0)
 		-- wait for leash to shutdown before running more tests.
@@ -48,4 +57,9 @@ step('I should be able to stop leash',
 step('I have added a process named "(.*)" running the command "(.*)"',
 	 function(step, process_name, command_line)
 		assert_equal(exec("leash add_process " .. process_name .. " '" .. command_line .. "'"), 0)
+	 end)
+
+step('I remove the process named "(.*)"',
+	 function(step, process_name)
+		assert_equal(exec("leash remove_process " .. process_name), 0)
 	 end)

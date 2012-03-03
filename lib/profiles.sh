@@ -8,10 +8,7 @@ create_profile() {
 	 CREATE_PROFILE_DIRECTORY="${PROFILE_DIRECTORY}/${PROFILE_NAME}"
 	 CURRENT_DIRECTORY="$(pwd)"
 
-	 if [ -d $CREATE_PROFILE_DIRECTORY ]
-	 then
-		  rm -rf $CREATE_PROFILE_DIRECTORY
-	 fi
+     delete_profile $PROFILE_NAME
 
 	 mkdir -p $CREATE_PROFILE_DIRECTORY
 	 
@@ -31,4 +28,14 @@ create_profile() {
 	 chmod +x run
 
 	 cd $CURRENT_DIRECTORY
+}
+
+delete_profile() {
+    PROFILE_NAME=$1
+    DELETE_PROFILE_DIRECTORY="${PROFILE_DIRECTORY}/${PROFILE_NAME}"
+
+	if [ -d $DELETE_PROFILE_DIRECTORY ]
+	then
+		rm -rf $DELETE_PROFILE_DIRECTORY
+	fi
 }
