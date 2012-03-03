@@ -27,4 +27,4 @@ export PROCER_PIDFILE="${RUN_DIRECTORY}/procer.pid"
 export CONFIG_DATABASE="${DATABASE_DIRECTORY}/config.sqlite"
 
 # Other environment setup
-export PATH="${PREFIX_DIRECTORY}/bin:$PATH"
+export PATH="${LEASH_DIRECTORY}/bin:${PREFIX_DIRECTORY}/bin:$PATH"
