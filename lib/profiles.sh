@@ -39,3 +39,14 @@ delete_profile() {
 		rm -rf $DELETE_PROFILE_DIRECTORY
 	fi
 }
+
+list_profiles() {
+    PROFILE_PATHS=($PROFILE_DIRECTORY/*)
+    for PROFILE in "${PROFILE_PATHS[@]##*/}"
+    do
+        if [ "${PROFILE}" != 'mongrel2' ]
+        then
+            echo $PROFILE
+        fi
+    done
+}
