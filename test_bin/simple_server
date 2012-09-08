@@ -27,7 +27,6 @@ local function write_pidfile()
    pidfile:close()
 end
 
--- TODO can we upgrade lua-posix to actually get signal support?
 -- trap_signals()
 write_pidfile()
 print("Started simple_server")

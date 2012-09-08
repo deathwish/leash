@@ -10,7 +10,7 @@
 # print ${DOWNLOAD_DIRECTORY}/package.luarock
 #
 get_rock_installer_path() {
-	 ROCK_NAME=$1
+	 ROCK_NAME="${*}"
 	 
 	 echo "${ROCK_NAME}" | grep -e 'http:\/\/.*\/*.luarock' > /dev/null
 	 if [ $? == 0 ]

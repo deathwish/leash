@@ -1,3 +1,4 @@
+luaposix 5.1.19-1
 lua_signal
 telescope
 luasec
